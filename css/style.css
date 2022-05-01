@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 4 version
+*/
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0-modified | 20110126
    License: none (public domain)
@@ -70,7 +77,6 @@ input[type=search] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
 
@@ -267,6 +273,7 @@ html input[disabled] {
 
 input[type="checkbox"],
 input[type="radio"] {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box; /* 1 */
     padding: 0; /* 2 */
     *height: 13px; /* 3 */
@@ -281,7 +288,6 @@ input[type="radio"] {
 
 input[type="search"] {
     -webkit-appearance: textfield; /* 1 */
-    -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box; /* 2 */
     box-sizing: content-box;
 }
@@ -394,9 +400,11 @@ textarea {
 }
 
 html{
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 *,*::before,*::after{
+    -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
 img{
@@ -419,6 +427,8 @@ header{
     top: 0;
     left: 0;
     width: 100%;
+    -webkit-transition: linear .2s ease-in-out;
+    -o-transition: linear .2s ease-in-out;
     transition: linear .2s ease-in-out;
     z-index: 99;
 }
@@ -426,14 +436,25 @@ header{
     display: none;
 }
 .header-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     padding-top: 30px;
 }
 nav ul{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 .header-item{
@@ -448,6 +469,8 @@ nav a{
 }
 nav a:active,nav a:focus,nav a:hover{
     color: #018ABE;
+    -webkit-transform: scale(1.2) translateX(10px);
+    -ms-transform: scale(1.2) translateX(10px);
     transform: scale(1.2) translateX(10px);
 }
 .header-button button{
@@ -462,7 +485,11 @@ nav a:active,nav a:focus,nav a:hover{
 }
 .header-button button:active,.header-button button:focus,.header-button button:hover{
     background: red;
+    -webkit-transform: translateX(20px) scale(1.3);
+    -ms-transform: translateX(20px) scale(1.3);
     transform: translateX(20px) scale(1.3);
+    -webkit-transition: .2s linear all;
+    -o-transition: .2s linear all;
     transition: .2s linear all;
 }
 
@@ -490,7 +517,98 @@ nav a:active,nav a:focus,nav a:hover{
 }
 .line2{
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+
+
+.logo-btn{
+    background-color: transparent;
+}
+.modal{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #018ABE;
+    width: 500px;
+    height: 400px;
+}
+.modal-active{
+    display: block;
+}
+.modal-close{
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    width: 20px;
+    height: 20px;
+
+}
+.modal-line-close{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: silver;
+    top: 50%;
+    cursor: pointer;
+}
+.modal-line-close:first-child{
+    transform: rotate(45deg);
+}
+.modal-line-close:last-child{
+    transform: rotate(-45deg);
+}
+.modal-title{
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 140%;
+    text-align: center;
+}
+.modal-form-title{
+    padding-bottom: 10px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+}
+.input-form{
+    display: flex;
+    flex-direction: column;
+}
+.input-form input{
+    margin-bottom: 10px;
+    width: 60%;
+    height: 40px;
+    align-self: center;
+}
+#chek {
+    width: 25px;
+    height: 25px;
+    align-self: start;
+    margin-left: 100px;
+}
+label span{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 140%;
+    margin-left: 10px;
+    vertical-align: super;
+}
+.btn-modal{
+    text-align: center;
+}
+.btn-modal button{
+    width: 60%;
+    height: 40px;
+    background: black;
+    color: aliceblue;
 }
 /*  <!-- terapia start-->*/
 .terapia{
@@ -499,7 +617,7 @@ nav a:active,nav a:focus,nav a:hover{
     padding-bottom: 150px;
 }
 .terapia-wrapper{
-    background: url("../img/terapia.jpg") no-repeat center;
+    background: url("../img/terapia-min.jpg") no-repeat center;
     background-size: cover;
 
     padding-top: 130px;
@@ -545,13 +663,22 @@ h2::after{
     margin-left: 45px;
 }
 .seans-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     padding-bottom: 150px;
 }
 .seans-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 .seans-pic{
@@ -570,16 +697,23 @@ h2::after{
     padding-bottom: 150px;
 }
 .gutachten-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
     padding-bottom: 60px;
 }
 .gut-sm{
-   flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
     margin: 10px;
     background: #018ABE;
     border-radius: 10px;
     opacity: .3;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
     cursor: pointer;
 }
@@ -601,6 +735,8 @@ h2::after{
     width: 30%;
     background: #018ABE;
     border-radius: 10px;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     opacity: 1;
 }
@@ -619,7 +755,11 @@ h2::after{
     margin: 0 60px 55px;
 }
 .gut-logo{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 .gut-svg{
@@ -642,7 +782,11 @@ h2::after{
     padding-bottom: 150px;
 }
 .RS-massage{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     padding-bottom: 100px;
 }
@@ -671,7 +815,11 @@ h2::after{
     padding-bottom: 150px;
 }
 .wert-seans-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 td:last-child{
@@ -698,7 +846,11 @@ footer{
 
 }
 .footer-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 .pool{
@@ -742,7 +894,11 @@ footer span{
 .footer-button button:hover{
     background: green;
     color: #FFFFFF;
+    -webkit-transform: scale(1.2) rotate(10deg) translateX(15px);
+    -ms-transform: scale(1.2) rotate(10deg) translateX(15px);
     transform: scale(1.2) rotate(10deg) translateX(15px);
+    -webkit-transition: .3s linear all;
+    -o-transition: .3s linear all;
     transition: .3s linear all;
 }
 .moi-email{
@@ -768,11 +924,17 @@ footer span{
         top: 0;
         left: 0;
         padding: 75px;
-       transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        transform: translateX(100%);
+        -webkit-transition: .4s linear all;
+        -o-transition: .4s linear all;
         transition: .4s linear all;
         z-index: 11;
     }
     .header-nav-active{
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
         transform: translateX(0);
     }
     .header-item{
@@ -799,9 +961,13 @@ footer span{
         height: 2px;
     }
     .line-close:first-child{
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
     .line-close:last-child{
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
         transform: rotate(-45deg);
     }
 
@@ -862,9 +1028,9 @@ footer span{
     }
 
 
- .RitmStyle{
-     padding-bottom: 50px;
- }
+    .RitmStyle{
+        padding-bottom: 50px;
+    }
     .RS-massage{
         padding-bottom: 50px;
     }
@@ -889,9 +1055,9 @@ footer span{
     }
 
 
-.wert-seans{
-    padding-bottom: 50px;
-}
+    .wert-seans{
+        padding-bottom: 50px;
+    }
     td:last-child {
         padding-left: 30px;
     }
@@ -906,10 +1072,13 @@ footer span{
         display: block;
     }
     .map{
-       text-align: center;
+        text-align: center;
     }
     .schwimmbads{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -ms-flex-pack: distribute;
         justify-content: space-around;
     }
     .pool-desc {
